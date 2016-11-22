@@ -4,10 +4,10 @@ import React, {Component} from 'react'
 import {Provider} from 'react-redux'
 import {Router} from 'react-router'
 import configureStore from './configureStore'
+import routes from './routes'
 
 export type RootProps = {
-  history: mixed,
-  routes: mixed
+  history: mixed
 }
 
 type RootState = {
@@ -30,7 +30,7 @@ export default class Root extends Component {
   }
 
   render() {
-    const {history, routes} = this.props
+    const {history} = this.props
     const {store} = this.state
 
     return (

@@ -6,7 +6,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 export default {
   devtool: 'eval',
   entry: {
-    ['react-hot-loader']: 'react-hot-loader/patch',
+    'react-hot-loader': 'react-hot-loader/patch',
     app: './src/index.js',
   },
   output: {
