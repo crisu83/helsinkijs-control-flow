@@ -7,7 +7,10 @@ export default {
   devtool: 'eval',
   entry: {
     'react-hot-loader': 'react-hot-loader/patch',
-    app: './src/index.js',
+    app: [
+      'babel-polyfill',
+      './src/index.js',
+    ],
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -27,7 +30,7 @@ export default {
       {
         test: /\.css$/,
         loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-        include: /node_modules/,
+        include: /src/,
       },
     ],
   },
@@ -41,6 +44,7 @@ export default {
   ],
   devServer: {
     hot: true,
+    historyApiFallback: true,
     quiet: true,
     inline: true,
     stats: false,

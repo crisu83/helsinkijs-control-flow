@@ -3,6 +3,7 @@
 import {browserHistory} from 'react-router'
 import Root from './Root'
 import renderApp from './renderApp'
+import './index.css'
 
 import type {RootProps} from './Root'
 

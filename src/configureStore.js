@@ -2,24 +2,25 @@
 
 import {applyMiddleware, compose, createStore} from 'redux'
 import createRootReducer from './createRootReducer'
-// import createSagaMiddleware from 'redux-saga'
-// import rootSaga from './rootSaga'
+import createSagaMiddleware from 'redux-saga'
+import createRootSaga from './createRootSaga'
 
 export default () => {
   const rootReducer = createRootReducer()
-  //const sagaMiddleware = createSagaMiddleware()
+  const rootSaga = createRootSaga()
+  const sagaMiddleware = createSagaMiddleware()
   const middlewares = []
 
-  // middlewares.push(sagaMiddleware);
+  middlewares.push(sagaMiddleware)
 
   const enhancer = compose(
     applyMiddleware(...middlewares),
-    window.devToolsExtension ? window.devToolsExtension() : (f) => f
+    window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 
   const store = createStore(rootReducer, enhancer)
 
-  // sagaMiddleware.run(rootSaga)
+  sagaMiddleware.run(rootSaga)
 
   if (module.hot) {
     // $FlowFixMe
